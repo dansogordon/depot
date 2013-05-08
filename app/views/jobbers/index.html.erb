@@ -16,13 +16,13 @@
       <br>
       <small>sort by</small>
       <div class="page-header">
-        <%= link_to 'Web Designers', sort_gigs_design_path %>
+        <%= link_to 'Web Designers', jobbers_path %>
       </div>
       <div class="page-header">
-        <%= link_to 'Web Developers', sort_gigs_develop_path %> 
+        <%= link_to 'Web Developers', jobbers_path %> 
       </div>
       <div class="page-header">
-         <%= link_to 'Country', sort_gigs_country_path %> 
+         <%= link_to 'Country', jobbers_path %> 
       </div>
       <a class="btn btn-success" href="#">Contact/Email</a>
     </div>
@@ -43,11 +43,7 @@
       <div class="well">
       <address>
         <h3><%= jobber.user.first_name %> </h3>  
-          <% if jobber.user.avatar.blank? %>
-          <%= image_tag("http://i42.tinypic.com/ruyxqb.jpg", :size => "55x35") %>
-          <% else %>
-          <%= image_tag(jobber.user.avatar, :size => "55x35") %> 
-          <% end %>
+          
 
            | <%= jobber.organization %>   |  <abbr title="Phone"><%= jobber.category %></abbr> | <%= jobber.user.country %> | <%= country_image(jobber)  %>
             <br>

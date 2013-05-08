@@ -1,5 +1,4 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +13,7 @@
  <div class="container">
  <% else %>
  <div class="main_page">
-<% end %>
+<% end %>	
 
 
 <div class="navbar navbar-fixed-top">	
@@ -33,7 +32,7 @@
 					 	<ul class ="nav pull-right">
 					 		<% if user_signed_in? %>
 	  							
-	  								<% current_user.first_name %>
+	  								<% current_user%>
 	  							<li><%= link_to "Log Out", sign_out_path %></li>
 	  						<% else %>
 	  							<li><%= link_to "Register", register_path %></li>

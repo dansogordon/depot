@@ -1,7 +1,9 @@
 class JobbersController < ApplicationController
+before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :index]
+
   # GET /jobbers
   # GET /jobbers.json
-  
+
   def after_sign_out_path_for(resource)
    #if current_user_signed_in?
      # redirect_to home_path 
@@ -11,10 +13,10 @@ class JobbersController < ApplicationController
   end
 
 
-  
+
   def index
     @jobbers = Jobber.all
-
+   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @jobbers }

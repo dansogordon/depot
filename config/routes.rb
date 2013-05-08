@@ -1,4 +1,7 @@
 Gigsite::Application.routes.draw do
+  
+  
+
   devise_for :users
   get "sort_gigs/design"
   get "sort_gigs/develop"
@@ -10,13 +13,14 @@ Gigsite::Application.routes.draw do
   get "picture/image_file"
   get "profiles/show"
   get "site/index"
-
+  #devise_for :users
   devise_for :users do
     get '/sign_out' => 'devise/sessions#destroy', :as => "sign_out"
     get '/sign_in' => 'devise/sessions#new', :as => "sign_in"
     get '/register' => 'devise/registrations#new', :as => "register"
     get '/log_out' => 'devise/registrations#destroy', :as => "log_out"
   end
+ 
 
   resources :jobbers
   root :to => 'jobbers#index'
