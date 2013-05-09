@@ -1,0 +1,86 @@
+ <% flash.each do |type, message| %>
+  <div class="alert <%= flash_class type %>">
+    <%= message %>
+  </div>
+  <% end %>
+    <% @pagetitle = "#{params[:id]}" %>
+   
+<div class="row">
+    <div class="span2"> <h1><br><br></h1>
+     <br>
+       <a class="btn  btn-primary btn-large", href="/@pagetitle/">Profile Page</a>
+       <a class="btn  btn-mini", href="/users/edit">Add/Edit image</a>
+       <br>
+        <a class="btn  btn-mini", href="/users/edit">Edit Listing</a>
+      <br>
+      <br>
+      <br>
+      <small>sort by</small>
+     
+    <div class="page-header">
+      <%= link_to 'Web Developers', sort_gigs_develop_path %> 
+     </div>
+       <div class="page-header">
+      <%= link_to 'Country', sort_gigs_country_path %> 
+     </div>
+
+      <hr/>
+      <a class="btn btn-success" href="#">Contact/Email</a>
+      </div>
+      <div class="span6">
+       <div class="page-header">
+         <h1>Web Design Listings</h1>  
+       </div>  
+      <div class="jobber">
+    
+      <a class="btn btn-warning btn-large", href="/jobbers/new">New Gig Listing</a>
+      <p>
+     
+     
+         
+    <table>
+     <% @jobbers.each do |jobber| %>
+     <tr>
+      <div class="well">
+      <address>
+        <h3><%= jobber.user.first_name %> </h3>  
+         
+
+           | <%= jobber.organization %>   |  <abbr title="Phone"><%= jobber.category %></abbr> | <%= jobber.user.country %> | <%= country_image(jobber)  %>
+            <br>
+             Job Description: <%= jobber.job_description %> <br>Donation Amount:
+            <%= number_to_currency(jobber.donation_amt) %>
+        </address>
+        <div class="meta">
+         <%= link_to time_ago_in_words(jobber.created_at) + " ago", jobber %> | 
+          <span class="admin">
+          <%= link_to 'Edit', edit_jobber_path(jobber) %> | 
+
+          <%= link_to 'Delete', jobber, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </span>
+          </span>
+        </div>
+    
+     </tr>
+    <% end %>
+  </div>
+    </table> 
+    </div>
+    <br />
+  </div>
+
+<div >
+
+  <div class="span4"> <h1><br><br></h1>
+    <div class="hero-unit">
+    <h2>Freelancer Listing</h2>
+    <p>"a click away"</p>
+    <p>
+    <a class="btn btn-warning btn-large">
+    Freelancers
+    </a>
+    </p>
+    </div></div>
+</div>
+   
+

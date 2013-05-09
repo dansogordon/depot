@@ -1,5 +1,5 @@
 class JobbersController < ApplicationController
-before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :index]
+before_filter :authenticate_user!#, only: [:new, :create, :edit, :update, :index]
 
   # GET /jobbers
   # GET /jobbers.json

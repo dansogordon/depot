@@ -3,26 +3,26 @@
     <%= message %>
   </div>
   <% end %>
-    <% @pagetitle = "#{params[:id]}" %>
-   
+    
 <div class="row">
     <div class="span2"> <h1><br><br></h1>
      <br>
-      <a class="btn  btn-primary btn-large", href="/@pagetitle/">Profile Page</a>
-      <a class="btn  btn-mini", href="/users/edit">Add/Edit image</a>
-      <p>
-      <a class="btn  btn-mini", href="/users/edit">Edit Listing</a>
+      <a class="btn btn-large", href="/<%=current_user.profile_name %>" >Profile Page</a>
+      <br>
+       <br>
+      <a class="btn  btn-mini", href="/users/edit">Edit Account Information</a>
+        
       <br>
       <br>
       <small>sort by</small>
       <div class="page-header">
-        <%= link_to 'Web Designers', jobbers_path %>
+        <%= link_to 'Web Designers', sort_gigs_design_path %>
       </div>
       <div class="page-header">
-        <%= link_to 'Web Developers', jobbers_path %> 
+        <%= link_to 'Web Developers', sort_gigs_develop_path %> 
       </div>
       <div class="page-header">
-         <%= link_to 'Country', jobbers_path %> 
+         <%= link_to 'Country List', countries_site_index_path %> 
       </div>
       <a class="btn btn-success" href="#">Contact/Email</a>
     </div>
@@ -35,42 +35,92 @@
     <a class="btn btn-warning btn-large", href="/jobbers/new">New Gig Listing</a>
     <p>
      
-     
-         
+    
   <table>
      <% @jobbers.each do |jobber| %>
      <tr>
       <div class="well">
       <address>
-        <h3><%= jobber.user.first_name %> </h3>  
-          
-
-           | <%= jobber.organization %>   |  <abbr title="Phone"><%= jobber.category %></abbr> | <%= jobber.user.country %> | <%= country_image(jobber)  %>
+       <div class="text-right">
+        <% if jobber.user.avatar.blank? %>
+          <%= image_tag("http://i42.tinypic.com/ruyxqb.jpg", :size => "55x35") %>
+          <% else %>
+          <%= image_tag(jobber.user.avatar, :size => "75x55") %> 
+          <% end %>
+       </div>
+       <%= jobber.user.country %><h3><%= jobber.user.profile_name %></b>&nbsp;<%= country_image(jobber) %><br></h3>
+          Organization/Company: <%= jobber.organization %><br>
+          Looking for: <abbr title="Phone"><%= jobber.category %></abbr>  
             <br>
              Job Description: <%= jobber.job_description %> <br>Donation Amount:
-            <%= number_to_currency(jobber.donation_amt) %>
-        </address>
+            <%= number_to_currency(jobber.donation_amt) %>   <div class="text-right">
+              <a class="btn  btn-small", href="/<%=jobber.user.profile_name %>" >Email</a>   <a class="btn  btn-success btn-small", href="/<%=jobber.user.profile_name %>" >Submit</a> <a class="btn  btn-small", href="/<%=jobber.user.profile_name %>" >Profile</a> 
+            </div>
 
         <div class="meta">
          <%= link_to time_ago_in_words(jobber.created_at) + " ago", jobber %> | 
           <span class="admin">
           <%= link_to 'Edit', edit_jobber_path(jobber) %> | 
-
           <%= link_to 'Delete', jobber, method: :delete, data: { confirm: 'Are you sure?' } %>
           </span>
           </span>
         </div>
-
+     </address>
      </tr>
     <% end %>
   </div>
   </table> 
 
 
+<% @jobbers.each do |jobber| %>
+<table>
+<tr>
+<td>
+  <div class="span1"> 
 
+     <div style="margin-top: -90px">
+      <% if jobber.user.avatar.blank? %>
+        <%= image_tag("http://i42.tinypic.com/ruyxqb.jpg", :size => "55x35") %>
+        <% else %>
+        <%= image_tag("http://i42.tinypic.com/ruyxqb.jpg", :size => "75x55") %> 
+      <% end %>
+    </div>
+
+  </div>
+</td>
+<td>
+  <div class="span6">
+   <div style="margin-top: -0px">
+    <p class="lead"><b><%= jobber.user.profile_name %></b>&nbsp;<%= country_image(jobber) %></p><br>
+     Organization/Company: <%= jobber.organization %>  <br>
+     Looking for: <abbr title="Phone"><%= jobber.category %></abbr>
+    <address><p> Job Description: <%= jobber.job_description %> <br>Donation Amount:
+      <%= number_to_currency(jobber.donation_amt) %> <br>  <em>
+       <div class="text-right"> <a class="btn  btn-small", href="/<%=jobber.user.profile_name %>" >Email</a>   <a class="btn  btn-success btn-small", href="/<%=jobber.user.profile_name %>" >Submit</a> <a class="btn  btn-small", href="/<%=jobber.user.profile_name %>" >Profile</a> 
+       </div>
+      </em>
+     </p>
+    </address>
+    </div>
+  </div>
+</td>
+</tr>
+</table>
+
+<div class="span5.5">
+   <address><p> Job Description: <%= jobber.job_description %> <br>Donation Amount:
+    <%= number_to_currency(jobber.donation_amt) %> <br>  <em>
+     <div class="text-right"> <a class="btn  btn-small", href="/<%=jobber.user.profile_name %>" >Email</a>   <a class="btn  btn-success btn-small", href="/<%=jobber.user.profile_name %>" >Submit</a> <a class="btn  btn-small", href="/<%=jobber.user.profile_name %>" >Profile</a> 
+     </div>
+    </em>
+   </p>
+   </address>
+</div>
+<% end %>
     </div>
     <br />
   </div>
+
 
 <div >
   <div class="span4"> <h1><br><br></h1>

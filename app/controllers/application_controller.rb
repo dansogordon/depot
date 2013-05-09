@@ -20,11 +20,4 @@ class ApplicationController < ActionController::Base
 	  end
 	end
 
-	private
-
-   def current_user
-    true
-   end
-
-
 end

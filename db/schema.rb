@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507071817) do
+ActiveRecord::Schema.define(:version => 20130508091029) do
 
   create_table "jobbers", :force => true do |t|
     t.text     "job_description"
@@ -43,6 +43,10 @@ ActiveRecord::Schema.define(:version => 20130507071817) do
     t.string   "last_name"
     t.string   "country"
     t.string   "profile_name"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["country"], :name => "index_users_on_country"
