@@ -1,2 +1,0 @@
-module CountriesSiteHelper
-end
