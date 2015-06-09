@@ -18,6 +18,8 @@ class MainController < ApplicationController
   end
 
   def index
+  end
 
+  def control
   end
 end

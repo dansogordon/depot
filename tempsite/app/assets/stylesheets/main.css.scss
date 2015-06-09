@@ -3,11 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
- .main_page{
-  /*background-color: black;*/
+ .wallpaper{
+background: url("http://s4.postimg.org/x5eep2nn1/Mock_Sample_copy.jpg") no-repeat center;
+margin-top: 1px;
 
-background: url("http://s3.postimg.org/dtpjvqsvn/Mock_Sample_copy.jpg") no-repeat center;
 background-size: 100%;
 min-height: 1900px;
-margin-bottom: 50px;
 }

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :staffs
+
+  get 'main/control'
+
   get 'main/deck'
 
   get 'main/video'
@@ -13,8 +18,10 @@ Rails.application.routes.draw do
 
   get 'main/index'
 
+   get 'main/control'
 
-   root :to => 'main#index'
+
+   root :to => 'main#control'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

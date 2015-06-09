@@ -8,13 +8,33 @@
 
   <%= csrf_meta_tags %>
 </head>
+
+
 <body>
- <div class="main_page">
-    
+
+    <% if user_signed_in? %>
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Deck", "#" %></li> 
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Staff", "#" %></li>   
+           <li><%= link_to "Contact", "#" %></li> 
+          <li class="divider-vertical"></li>
+          <li><%= link_to "About", "#" %></li>   
+           <li><%= link_to "Video", "#" %></li>    
+    <% else %>
+    	 <div class="wallpaper">
+          <li><%= link_to "Register", "#" %></li>
+          <li><%= link_to "Log in", "#" %></li> 
+         </div> 
+    <% end %>
+
+
+
     <div class="container">
+   	 <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
      <%= yield %>
     </div>
- </div>
+
 </body>
 </html>
-<%= image_tag("http://s3.postimg.org/m3f7fdqr7/Logo_PNG.png") %>
